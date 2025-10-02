@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [[ $1 == "install" ]]; then
+    shift
+    pacman -S $@
+
+elif [[ $1 == "update" ]]; then
+    pacman -Syyu
+
+elif [[ $1 == "remove" ]]; then
+    shift
+    if [[ $1 == "total" ]]; then
+        shift
+        pacman -Rns $@
+    else
+        pacman -R $@
+    fi
+
+else
+    echo "POPI: command not found."
+
+fi

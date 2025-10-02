@@ -1,0 +1,11 @@
+NAME="Procasti!_OS"
+PRETTY_NAME="Procasti!_OS"
+ID=procasti
+VERSION="Procasti Hand-Made. Purple"
+BUILD_ID=compiled
+HOME_URL="https://archlinux.org/"
+DOCUMENTATION_URL="https://wiki.archlinux.org/"
+SUPPORT_URL="https://bbs.archlinux.org/"
+BUG_REPORT_URL="https://gitlab.archlinux.org/groups/archlinux/-/issues"
+PRIVACY_POLICY_URL="https://terms.archlinux.org/docs/privacy-policy/"
+LOGO=/usr/share/procasti/procasti.png
