@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-mount -o remount.size=4G /run/archiso/cowspace
 
 python3 /usr/local/bin/.procastios/installer-preparer.py
