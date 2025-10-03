@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Install Procasti!_OS
+Comment=Procasti!_OS installer
+Icon=/usr/local/bin/.procastios/assets/logo.png
+Exec=/usr/bin/python3 /usr/local/bin/.procastios/installer.py
+Terminal=true
+Type=Application
+Categories=System;

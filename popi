@@ -17,6 +17,9 @@ if [[ $1 == "sync" ]]; then
 
             curl -L --progress-bar -o /usr/local/bin/.procasti/packages/installer_preparer.py \
               "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/scripts/installer_preparer.py"
+            
+            curl -L --progress-bar -o /usr/local/bin/.procasti/packages/install-system.desktop \
+              ""
 
             echo "everything is downloaded."
             echo "copying files..."
