@@ -102,7 +102,7 @@ elif [[ $1 == "update" ]]; then
     shift
     if [[ $1 == "--popi" ]]; then
     echo "updating popi..."
-        popi-updater
+        sudo popi-updater
     else
         pacman -Syyu
     fi
