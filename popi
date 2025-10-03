@@ -19,7 +19,7 @@ if [[ $1 == "sync" ]]; then
               "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/scripts/installer_preparer.py"
             
             curl -L --progress-bar -o /usr/local/bin/.procasti/packages/install-system.desktop \
-              ""
+              "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/refs/heads/main/scripts/install-system.desktop"
 
             echo "everything is downloaded."
             echo "copying files..."
@@ -28,9 +28,12 @@ if [[ $1 == "sync" ]]; then
             chmod +x /usr/local/bin/installer-preparer
             mkdir -p /usr/local/bin/.procastios
             cp /usr/local/bin/.procasti/packages/installer.py /usr/local/bin/.procastios
-            chmod 775 /usr/local/bin/.procastios/installer.py
+            chmod 755 /usr/local/bin/.procastios/installer.py
             cp /usr/local/bin/.procasti/packages/installer_preparer.py /usr/local/bin/.procastios
-            chmod 775 /usr/local/bin/.procastios/installer_preparer.py
+            chmod 755 /usr/local/bin/.procastios/installer_preparer.py
+            cp /usr/local/bin/.procasti/packages/install-system.desktop /usr/local/bin.procastios
+            chmod 755 usr/local/bin.procastios/install-system.desktop
+            chmod +x usr/local/bin.procastios/install-system.desktop
 
             echo "download completed."
             echo "downloading assets..."
