@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+if [[ $1 == "sync" ]]; then
+    shift
+    if [[ $1 == "-s" ]]; then
+        shift
+        if [[ $1 == "--all" ]]; then
+            mkdir -p /usr/local/bin/.procasti/packages
+            echo "syncing repo..."
+            echo "downloading..."
+
+            curl -L --progress-bar -o /usr/local/bin/.procasti/packages/installer-preparer \
+              "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/scripts/installer-preparer"
+
+            curl -L --progress-bar -o /usr/local/bin/.procasti/packages/installer.py \
+              "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/scripts/installer.py"
+
+            curl -L --progress-bar -o /usr/local/bin/.procasti/packages/installer_preparer.py \
+              "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/scripts/installer_preparer.py"
+
+            echo "everything is downloaded."
+            echo "copying files..."
+
+            cp /usr/local/bin/.procasti/packages/installer-preparer /usr/local/bin/
+            chmod +x /usr/local/bin/installer-preparer
+            mkdir -p /usr/local/bin/.procastios
+            cp /usr/local/bin/.procasti/packages/installer.py /usr/local/bin/.procastios
+            chmod 775 /usr/local/bin/.procastios/installer.py
+            cp /usr/local/bin/.procasti/packages/installer_preparer.py /usr/local/bin/.procastios
+            chmod 775 /usr/local/bin/.procastios/installer_preparer.py
+
+            echo "download completed."
+            echo "downloading assets..."
+
+            mkdir -p /usr/local/bin/.procasti/assets
+            curl -L --progress-bar -o /usr/local/bin/.procasti/assets/logo.png \
+              "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/assets/logo.png"
+
+            mkdir -p /usr/local/bin/.procasti/assets/procasti
+            for f in hostname issue os-release popi procasti.png; do
+                curl -L --progress-bar -o /usr/local/bin/.procasti/assets/procasti/$f \
+                  "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/assets/procasti/$f"
+
+                  chmod 755 /usr/local/bin/.procasti/assets/procasti/$f
+            done
+
+            echo "everything is downloaded."
+            echo "copying files..."
+
+            mkdir -p /usr/local/bin/.procastios/assets/procasti
+            cp /usr/local/bin/.procasti/assets/procasti/* /usr/local/bin/.procastios/assets/procasti/
+            cp /usr/local/bin/.procasti/assets/logo.png /usr/local/bin/.procastios/assets/
+
+        else
+            echo "[ERROR]: you can only download all or manually."
+        fi
+    else
+        echo "[ERROR]: this parameter is not valid."
+    fi
+
+elif [[ $1 == "--prepare" ]]; then
+    shift
+    if [[ $1 == "-root" ]]; then
+        shift
+        if [[ $1 == "procasti" ]]; then
+            mount -o remount,size=4G /run/archiso/cowspace
+        else
+            echo "[ERROR]: no preset found."
+        fi
+    else
+        echo "[ERROR]: you can only prepare your root filesystem."
+    fi
+
+elif [[ $1 == "install" ]]; then
+    shift
+    pacman -S "$@"
+
+elif [[ $1 == "update" ]]; then
+    shift
+    pacman -Syyu
+
+elif [[ $1 == "remove" ]]; then
+    shift
+    if [[ $1 == "--total" ]]; then
+        shift
+        pacman -Rns "$@"
+    else
+        pacman -R "$@"
+    fi
+
+elif [[ $1 == "--info" ]]; then
+    echo "POPI v1.0 alpha."
+
+else
+    echo "[ERROR]: command not found."
+fi
