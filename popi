@@ -100,7 +100,7 @@ elif [[ $1 == "install" ]]; then
 
 elif [[ $1 == "update" ]]; then
     shift
-    if [[ $1 == "popi" ]]; then
+    if [[ $1 == "--popi" ]]; then
     echo "updating popi..."
         popi-updater
     else
