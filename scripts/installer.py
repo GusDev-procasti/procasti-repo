@@ -314,13 +314,12 @@ def finalizer(username: str = None):
     s(0.3)
     sub.run(["sudo", "arch-chroot", "/mnt", "systemctl", "enable", "NetworkManager", "--now"])
     print(info + "network system enabled.")
-    print("want sudo for your username?")
+    print(info + "Procasti!_OS installed. Want shutdown?[Y/n]: ")
     while True:
-        choose = input("option selected[Y/n]: ")
+        choose = input("option selected: ")
         if choose.strip() == "":
             print(error + "this part is empty. Using preset 'y'.")
             choose = 'y'
-            break
         else:
             if choose in ['y', 'Y', 's', 'S'] or choose in ['n', 'N']:
                 break
@@ -328,71 +327,16 @@ def finalizer(username: str = None):
                 print(error + "this option is not valid.")
                 continue
     if choose in ['y', 'Y', 's', 'S']:
-        print(info + "generating sudo file...")
-        with open(f"/usr/local/bin/.procastios/generated/{global_name}", "w") as f:
-            f.write(f"{global_name} ALL=(ALL:ALL) ALL")
-            sub.run(["sudo", "chmod", "644", f"/usr/local/bin/.procastios/generated/{username}"])
-            print(info + "file generated successfully.")
-        sudoers_file = p("/mnt/etc/sudoer.d")
-        if sudoers_file.exists() and sudoers_file.is_dir():
-            print(info + "sudoers file found. Copying...")
-            sub.run(["sudo", "cp", f"/usr/local/bin/.procastios/generated/{username}", "/mnt/etc/sudoers.d/"])
-            print(info + "sudo added.")
-            print("everything is done. To boot into Procasti!_OS Shutdown your computer and remove the installer.")
-            print("want shutdown now?")
-            while True:
-                resp = input("option selected[Y/n]: ")
-                if resp.strip() == "":
-                    print(error + "this part is empty. Using preset 'y'.")
-                    resp = 'y'
-                    break
-                else:
-                    if resp in ['y', 'Y', 's', 'S'] or resp in ['n', 'N']:
-                        break
-                    else:
-                        print(error + "this option is not valid.")
-                        continue
-            if resp in ['y', 'Y', 's', 'S']:
-                print("Thanks to install Procasti!_OS :)")
-                s(1.5)
-                sub.run(["shutdown", "now"])
-            elif resp in ['n', 'N']:
-                print("Thanks to install Procasti!_OS :)")
-                s(1.5)
-                sys.exit()
+        print("Thanks to install Procasti!_OS :)")
+        s(1.5)
+        sub.run(["shutdown", "now"])
+    elif choose in ['n', 'N']:
+        print("Thanks to install Procasti!_OS :)")
+        s(1.5)
+        sys.exit()
 
-        else:
-            print(info + "sudoers file not found. Creating...")
-            sub.run(["sudo", "mkdir", "-p", "/mnt/etc/sudoers.d"])
-            print(info + "folder created.")
-            sub.run(["sudo", "cp", f"/usr/local/bin/.procastios/generated/{global_name}", "/mnt/etc/sudoers.d/"])
-            print(info + "sudo added.")
-            print("everything is done. To boot into Procasti!_OS Shutdown your computer and remove the installer.")
-            print("want shutdown now?")
-            while True:
-                resp = input("option selected[Y/n]: ")
-                if resp.strip() == "":
-                    print(error + "this part is empty. Using preset 'y'.")
-                    resp = 'y'
-                    break
-                else:
-                    if resp in ['y', 'Y', 's', 'S'] or resp in ['n', 'N']:
-                        break
-                    else:
-                        print(error + "this option is not valid.")
-                        continue
-            if resp in ['y', 'Y', 's', 'S']:
-                sub.run(["sudo", "umount", "-R", "/mnt"])
-                s(0.5)
-                print("Thanks to install Procasti!_OS :)")
-                s(1.5)
-                sub.run(["shutdown", "now"])
-            elif resp in ['n', 'N']:
-                sub.run(["sudo", "umount", "-R", "/mnt"])
-                s(0.5)
-                print("Thanks to install Procasti!_OS :)")
-                s(1.5)
-                sys.exit()
+
+        
     
 if __name__ == "__main__":
     boot()
