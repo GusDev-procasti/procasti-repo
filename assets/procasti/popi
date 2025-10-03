@@ -16,6 +16,31 @@ elif [[ $1 == "remove" ]]; then
         pacman -R $@
     fi
 
+elif [[ $1 == "sudo" ]]; then
+    shift
+    if [[ $1 == "-add" ]]; then
+        shift
+        if [[ $1 == "--self"]]; then
+            echo "adding sudo for '$USER'..."
+            echo "$USER ALL=(ALL:ALL) ALL" | sudo tee /etc/sudoers.d/$USER
+            chmod 440 /etc/sudoers.d/$USER
+            echo "sudo added for '$USER'."
+        else
+            echo "[ERROR]: you cannot add sudo for other users."
+        fi
+    elif [[ $1 == "-rem" ]]; then
+        shift
+        if [[ $1 == "--self" ]]; then
+            echo "removing sudo from '$USER'..."
+            rm -rf /etc/sudoers.d/$USER
+            echo "sudo removed."
+        else
+            echo "[ERROR]: you cannot remove sudo from other users."
+        fi
+    else
+        echo "[ERROR]: no parameter valid."
+    fi
+
 else
     echo "POPI: command not found."
 
