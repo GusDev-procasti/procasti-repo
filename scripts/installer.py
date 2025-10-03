@@ -285,6 +285,7 @@ def personalizer(username: str = None):
     if choose == 1:
         print(info + "Selected: KDE Plasma.")
         sub.run(["sudo", "arch-chroot", "/mnt", "pacman -S", "plasma", "kde-applications", "--noconfirm"])
+        sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "firefox", "--noconfirm"])
         print(info + "KDE Plasma installed.")
         sub.run(["sudo", "arch-chroot", "/mnt", "systemctl", "enable", "sddm", "--now"])
         print(info + "KDE Plasma installation finished.")
@@ -292,6 +293,7 @@ def personalizer(username: str = None):
     elif choose == 2:
         print(info + "Selected: GNOME.")
         sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "gnome", "gnome-extra.", "--noconfirm"])
+        sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "firefox", "--noconfirm"])
         print(info + "GNOME installed.")
         sub.run(["sudo", "arch-chroot", "/mnt", "systemctl", "enable", "gdm", "--now"])
         print(info + "GNOME installation finished.")
@@ -299,6 +301,7 @@ def personalizer(username: str = None):
     elif choose == 3:
         print(info + "Selected: XFCE.")
         sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "xfce4", "xfce4-goodies", "--noconfirm"])
+        sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "firefox", "--noconfirm"])
         print(info + "XFCE installed.")
         sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "lightdm", "lightdm-gtk-greeter", "--noconfirm"])
         print(info + "lightdm installed.")
