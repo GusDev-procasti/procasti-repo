@@ -5,7 +5,14 @@ if [[ $1 == "install" ]]; then
     pacman -S $@
 
 elif [[ $1 == "update" ]]; then
-    pacman -Syyu
+    shift
+    if [[ $1 == "--popi" ]]; then
+        echo "updating POPI..."
+        popi-updater
+        echo "POPI updated."
+    else
+        pacman -Syyu
+    fi
 
 elif [[ $1 == "remove" ]]; then
     shift

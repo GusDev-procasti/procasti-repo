@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+mkdir -p /usr/local/bin/.popi
+cp /usr/local/bin/popi /usr/local/bin/.popi/popi.old
+curl -L --progress-bar -o "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/refs/heads/main/assets/procasti/popi"
