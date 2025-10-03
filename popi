@@ -55,7 +55,24 @@ if [[ $1 == "sync" ]]; then
             echo "[ERROR]: you can only download all or manually."
         fi
     else
-        echo "[ERROR]: this parameter is not valid."
+        if [[ $1 == "-d" ]]; then
+            shift
+            if [[ $1 == "--cache" ]]; then
+                shift
+                if [[ $1 == "procasti" ]]; then
+                    echo "deletind Procasti!_OS cache..."
+                    rm -rf /usr/local/bin/.procasti
+                    rm -rf /usr/local/bin/.procastios
+                    echo "Procasti!_OS cache deleted."
+                else
+                    echo "[ERROR]: no preset found."
+                fi
+            else
+                echo "[ERROR]: you can only delete cache from installation."
+            fi
+        else
+            echo "[ERROR]: option not found for sync."
+        fi
     fi
 
 elif [[ $1 == "--prepare" ]]; then
