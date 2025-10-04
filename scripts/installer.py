@@ -90,6 +90,7 @@ def partitioner(disk: None):
     print(info + "boot partitioner...")
     s(0.3)
     print(info + f"trying make GPT label on {disk}...")
+    sub.run(["sudo", "umount", "-R", "/mnt"])
     sub.run(["sudo", "parted", "-s", disk, "mklabel", "gpt"])
     print(info + "disk formated to GPT.")
     print(info + "Trying to make boot partition...")
