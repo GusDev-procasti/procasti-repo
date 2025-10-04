@@ -52,6 +52,7 @@ if [[ $1 == "sync" ]]; then
 
             curl -L --progress-bar -o /usr/local/bin/.procasti/assets/grub "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/refs/heads/main/assets/procasti/grub"
             chmod 755 /usr/local/bin/.procasti/assets/grub
+            curl -L --progress-bar -o /usr/local/bin/.procasti/assets/splash.png ""
 
             echo "everything is downloaded."
             echo "copying files..."
