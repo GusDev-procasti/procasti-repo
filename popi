@@ -70,7 +70,7 @@ if [[ $1 == "sync" ]]; then
             if [[ $1 == "--cache" ]]; then
                 shift
                 if [[ $1 == "procasti" ]]; then
-                    echo "deletind Procasti!_OS cache..."
+                    echo "deleting Procasti!_OS cache..."
                     rm -rf /usr/local/bin/.procasti
                     rm -rf /usr/local/bin/.procastios
                     rm -rf /usr/local/bin/installer-preparer
