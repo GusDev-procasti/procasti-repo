@@ -73,6 +73,7 @@ if [[ $1 == "sync" ]]; then
                     echo "deletind Procasti!_OS cache..."
                     rm -rf /usr/local/bin/.procasti
                     rm -rf /usr/local/bin/.procastios
+                    rm -rf /usr/local/bin/installer-preparer
                     echo "Procasti!_OS cache deleted."
                 else
                     echo "[ERROR]: no preset found."
