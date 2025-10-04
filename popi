@@ -43,7 +43,7 @@ if [[ $1 == "sync" ]]; then
               "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/assets/logo.png"
 
             mkdir -p /usr/local/bin/.procasti/assets/procasti
-            for f in hostname issue os-release popi procasti.png popi-updater; do
+            for f in hostname issue os-release popi procasti.png popi-updater grub; do
                 curl -L --progress-bar -o /usr/local/bin/.procasti/assets/procasti/$f \
                   "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/assets/procasti/$f"
 
