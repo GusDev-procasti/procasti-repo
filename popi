@@ -52,7 +52,8 @@ if [[ $1 == "sync" ]]; then
 
             curl -L --progress-bar -o /usr/local/bin/.procasti/assets/grub "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/refs/heads/main/assets/procasti/grub"
             chmod 755 /usr/local/bin/.procasti/assets/grub
-            curl -L --progress-bar -o /usr/local/bin/.procasti/assets/splash.png ""
+            curl -L --progress-bar -o /usr/local/bin/.procasti/assets/splash.png "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/refs/heads/main/assets/procasti/splash.png"
+            chmod 755 /usr/local/bin/.procasti/assets/splash.png
 
             echo "everything is downloaded."
             echo "copying files..."
@@ -60,6 +61,7 @@ if [[ $1 == "sync" ]]; then
             mkdir -p /usr/local/bin/.procastios/assets/procasti
             cp /usr/local/bin/.procasti/assets/procasti/* /usr/local/bin/.procastios/assets/procasti/
             cp /usr/local/bin/.procasti/assets/grub /usr/local/bin/.procastios/assets/procasti
+            cp /usr/local/bin/.procasti/assets/splash.png /usr/local/bin/.procastios/assets/procasti
             cp /usr/local/bin/.procasti/assets/logo.png /usr/local/bin/.procastios/assets/
 
         else
