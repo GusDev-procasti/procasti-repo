@@ -71,6 +71,8 @@ def disk_selector():
                         if choose.strip() == "":
                             print(info + "this part is empty. Using preset 'n'.")
                             choose = 'n'
+                            break
+
                         else:
                             if choose in ['y', 'Y', 's', 'S'] or choose in ['n', 'N']:
                                 break
