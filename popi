@@ -71,7 +71,6 @@ if [[ $1 == "sync" ]]; then
 
         else
             echo "[ERROR]: you can only download all or manually."
-        fi
     else
         if [[ $1 == "-d" ]]; then
             shift
