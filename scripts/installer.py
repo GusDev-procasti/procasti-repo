@@ -295,7 +295,7 @@ def personalizer(username: str = None):
                 continue
     if choose == 1:
         print(info + "Selected: KDE Plasma.")
-        sub.run(["sudo", "arch-chroot", "/mnt", "pacman -S", "plasma", "--noconfirm"])
+        sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "plasma", "--noconfirm"])
         sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "firefox", "--noconfirm"])
         print(info + "KDE Plasma installed.")
         sub.run(["sudo", "arch-chroot", "/mnt", "systemctl", "enable", "sddm", "--now"])
