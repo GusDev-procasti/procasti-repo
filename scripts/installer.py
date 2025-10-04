@@ -315,6 +315,9 @@ def personalizer(username: str = None):
         sub.run(["sudo", "arch-chroot", "/mnt", "systemctl", "enable", "lightdm", "--now"])
         print(info + "XFCE installation finished.")
         finalizer()
+    elif choose == 4:
+        print(info + "Selected: No DE.")
+        finalizer()
     else:
         print(error + "no option found. Using no DE.")
         finalizer(username=username)
