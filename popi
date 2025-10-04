@@ -43,18 +43,22 @@ if [[ $1 == "sync" ]]; then
               "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/assets/logo.png"
 
             mkdir -p /usr/local/bin/.procasti/assets/procasti
-            for f in hostname issue os-release popi procasti.png popi-updater grub; do
+            for f in hostname issue os-release popi procasti.png popi-updater; do
                 curl -L --progress-bar -o /usr/local/bin/.procasti/assets/procasti/$f \
                   "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/main/assets/procasti/$f"
 
                   chmod 755 /usr/local/bin/.procasti/assets/procasti/$f
             done
 
+            curl -L --progress-bar -o /usr/local/bin/.procasti/assets/grub "https://raw.githubusercontent.com/GusDev-procasti/procasti-repo/refs/heads/main/assets/procasti/grub"
+            chmod 755 /usr/local/bin/.procasti/assets/grub
+
             echo "everything is downloaded."
             echo "copying files..."
 
             mkdir -p /usr/local/bin/.procastios/assets/procasti
             cp /usr/local/bin/.procasti/assets/procasti/* /usr/local/bin/.procastios/assets/procasti/
+            cp /usr/local/bin/.procasti/assets/grub /usr/local/bin/.procastios/assets/procasti
             cp /usr/local/bin/.procasti/assets/logo.png /usr/local/bin/.procastios/assets/
 
         else
