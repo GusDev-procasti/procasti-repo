@@ -223,7 +223,7 @@ def bootloader_installer(username: str = None):
     s(0.3)
     sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-S", "grub", "efibootmgr", "--noconfirm"])
     print(info + "bootloader installer installed successfully.")
-    sub.run(["sudo rm -rf /mnt/etc/default/grub"])
+    sub.run(["sudo", "rm", "/mnt/etc/default/grub"])
     sub.run(["sudo cp /usr/local/bin/.procastios/procasti/grub /mnt/etc/default/"])
     s(0.3)
     sub.run(["sudo", "arch-chroot", "/mnt", "grub-install", "--target=x86_64-efi", "--efi-directory=/boot", "--bootloader-id=GRUB"])
