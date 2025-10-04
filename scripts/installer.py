@@ -259,6 +259,8 @@ def bootloader_installer(username: str = None):
 def personalizer(username: str = None):
     print(info + "booting personalizer...")
     s(0.3)
+    sub.run(["sudo", "arch-chroot", "/mnt", "pacman", "-Syyu"])
+    print(info + "repositories sync.")
     sub.run(["sudo", "cp", "/usr/local/bin/.procastios/assets/procasti/popi", "/mnt/usr/local/bin"])
     sub.run(["sudo", "cp", "/usr/local/bin/.procastios/assets/procasti/popi-updater", "/mnt/usr/local/bin"])
     sub.run(["sudo", "chmod", "+x", "/mnt/usr/local/bin/popi-updater"])
